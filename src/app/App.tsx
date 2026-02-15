@@ -66,9 +66,8 @@ export default function App() {
           </div>
           <p className="text-base">
             Directly from family farms in Abruzzo to your table.
-            Extra virgin olive oil, artisanal honey, and
-            sun-ripened antipasti. No middlemen. Pure
-            authenticity.
+            <br></br>Extra virgin olive oil, artisanal honey, and
+            sun-ripened antipasti. <br></br>No middlemen. Only genuine food.
           </p>
         </section>
 
@@ -79,7 +78,7 @@ export default function App() {
               <a
                 key={index}
                 href={link.url}
-                className="group flex items-center justify-center gap-3 px-[18px] py-[14px] bg-[#FFF0D7] rounded-[100px] border-[2px] border-[#194C24] transition-all duration-150 hover:-translate-y-0.5 hover:bg-[#EBE5D8]"
+                className="group flex items-center justify-center gap-3 px-[18px] py-[14px] bg-[#FFF0D7] rounded-[100px] border-[2px] border-[#194C24] transition-all duration-150 hover:-translate-y-0.5 hover:bg-[#E9E9BD]"
                 style={{
                   boxShadow: "2px 2px 0px 2px #194C24",
                   fontFamily: "Barlow, sans-serif",
@@ -90,7 +89,7 @@ export default function App() {
                 <span className="text-xl md:text-2xl">
                   {link.icon}
                 </span>
-                <span className="text-[15px] md:text-base">
+                <span className="text-[15px] md:text-base uppercase">
                   {link.text}
                 </span>
               </a>
@@ -101,8 +100,31 @@ export default function App() {
         {/* Social Icons Section */}
         <section className="px-4 py-8 flex justify-center gap-6">
           <a
-            href="#instagram"
-            className="w-9 h-9 md:w-11 md:h-11 flex items-center justify-center rounded-full bg-[#194C24] text-[#F5F1E8] transition-all duration-150 hover:scale-110 hover:bg-[#D94F30]"
+            href="https://facebook.com/cuppino.it"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-9 h-9 md:w-11 md:h-11 flex items-center justify-center rounded-full bg-[#194C24] text-[#F5F1E8] transition-all duration-150 hover:scale-110 hover:bg-[#18361A]"
+            aria-label="Facebook"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+            </svg>
+          </a>
+          <a
+            href="https://instagram.com/cuppino.it"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-9 h-9 md:w-11 md:h-11 flex items-center justify-center rounded-full bg-[#194C24] text-[#F5F1E8] transition-all duration-150 hover:scale-110 hover:bg-[#18361A]"
             aria-label="Instagram"
           >
             <svg
@@ -129,9 +151,11 @@ export default function App() {
             </svg>
           </a>
           <a
-            href="#facebook"
-            className="w-9 h-9 md:w-11 md:h-11 flex items-center justify-center rounded-full bg-[#194C24] text-[#F5F1E8] transition-all duration-150 hover:scale-110 hover:bg-[#D94F30]"
-            aria-label="Facebook"
+            href="https://tiktok.com/@cuppino.it"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-9 h-9 md:w-11 md:h-11 flex items-center justify-center rounded-full bg-[#194C24] text-[#F5F1E8] transition-all duration-150 hover:scale-110 hover:bg-[#18361A]"
+            aria-label="TikTok"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -144,48 +168,28 @@ export default function App() {
               strokeLinecap="round"
               strokeLinejoin="round"
             >
-              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-            </svg>
-          </a>
-          <a
-            href="#email"
-            className="w-9 h-9 md:w-11 md:h-11 flex items-center justify-center rounded-full bg-[#194C24] text-[#F5F1E8] transition-all duration-150 hover:scale-110 hover:bg-[#D94F30]"
-            aria-label="Email"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <rect width="20" height="16" x="2" y="4" rx="2" />
-              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
             </svg>
           </a>
         </section>
       </div>
 
       {/* Footer */}
-      <footer className="bg-[#D94F30] text-[#F5F1E8] py-6 mt-8">
+      <footer className="bg-[#871E1E] text-[#F5F1E8] py-6 mt-8">
         <div className="text-center space-y-3">
           <p className="text-xs md:text-sm">
-            Made with ❤️ in Abruzzo, delivered to Sweden
+            Made with ❤️ in Abruzzo, Italy
           </p>
           <div className="flex justify-center gap-4 text-xs">
-            <a href="#privacy" className="hover:underline">
+            <a href="https://cuppino.it/policies/privacy-policy" className="hover:underline">
               Privacy Policy
             </a>
             <span>|</span>
-            <a href="#terms" className="hover:underline">
-              Terms
+            <a href="https://cuppino.it/pages/shipping-returns" className="hover:underline">
+              Shipping & Returns
             </a>
             <span>|</span>
-            <a href="#contact" className="hover:underline">
+            <a href="https://cuppino.it/pages/contact" className="hover:underline">
               Contact
             </a>
           </div>
