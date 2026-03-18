@@ -20,6 +20,7 @@ export default function App() {
     },
     { icon: "🎁", text: "Gift Boxes", url: "https://cuppino.it/collections/cuppino-gift-boxes" },
     { icon: "📖", text: "Our Story", url: "https://cuppino.it/pages/story" },
+    { icon: "⭐", text: "Customer Reviews", url: "https://www.trustpilot.com/review/cuppino.it?languages=all" },
   ];
 
   return (
