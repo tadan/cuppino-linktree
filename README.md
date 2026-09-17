@@ -1,103 +1,93 @@
 # Cuppino Link-in-Bio Page
 
-Mobile-optimized link hub for Cuppino's social media profiles, designed to match the brand's authentic Italian artisan aesthetic.
+Mobile-first link hub for Cuppino's social profiles, used as the bio link on Instagram,
+TikTok and Facebook.
 
-**Live URLs:**
-- 🇮🇹 Italian: `cuppino.it/pages/links`
-- 🇸🇪 Swedish: `cuppino.se/pages/links`
-- 🌍 English: `cuppino.it/en/pages/links`
+**Live:** <https://links.cuppino.it>
 
-## Project Overview
+## Stack
 
-This React/TypeScript application provides a centralized landing page for all Cuppino social media links, optimized for Instagram/TikTok/Facebook bio links.
+React 18 + TypeScript, built with Vite 6 and Tailwind CSS v4. No router, no data layer —
+it is a single page that renders one list of links.
 
-**Key Features:**
-- Mobile-first responsive design
-- Cuppino brand colors (Deep Olive, Terracotta, Cream)
-- SEO-optimized for all three languages (IT/SE/EN)
-- Fast loading with Vite build system
-- Smooth animations and hover effects
-
-## Quick Start
-
-### Development
+## Development
 
 ```bash
-# Install dependencies
-npm i
-
-# Start development server (http://localhost:5173)
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
+npm install
+npm run dev        # http://localhost:5173
+npm run build      # production build into dist/
+npm run preview    # serve the built output locally
+npm run typecheck  # tsc --noEmit
 ```
 
-## Deployment to Shopify
+## Deployment
 
-See **SHOPIFY_DEPLOYMENT.md** for complete instructions on integrating this with your Shopify store.
+Vercel is connected to this GitHub repo and builds automatically:
 
-**Quick Deploy Options:**
-1. **Netlify/Vercel** (Recommended): Host the built app and embed in Shopify page
-2. **Shopify Pages**: Use custom Liquid template with inline HTML/CSS/JS
-3. **Subdomain**: Deploy to `links.cuppino.it` with DNS configuration
+- push to `main` → production deploy to <https://links.cuppino.it>
+- push to any other branch, or open a PR → preview deploy on its own URL
 
-## Brand Colors
+There is nothing to run by hand. Vercel uses `npm run build` and serves `dist/`.
 
-```css
---deep-olive: #194C24;
---terracotta: #D94F30;
---cream: #FFF0D7;
---background: #D6CDBF;
---dark-olive: #4A5D3B;
---text: #2C2C2C;
-```
+## Editing the links
 
-## Links Configuration
-
-Edit link URLs in `src/app/App.tsx`:
+All links live in one array at the top of [src/app/App.tsx](src/app/App.tsx):
 
 ```typescript
-const links = [
-  { icon: "🛒", text: "Shop Our Collection", url: "https://cuppino.it" },
-  // ... add more links
-];
+const links: { icon: string; text: string; url: string; badge?: string }[] = [
+    {
+        icon: '🍯',
+        text: 'Last Jars of Honey',
+        url: 'https://cuppino.it/collections/honey-from-abruzzo',
+        badge: 'Sale',
+    },
+    // ...
+]
 ```
 
-## Project Structure
+`badge` is optional — set it on a link to show a terracotta sticker on the pill (used to
+flag a sale). Omit it for a normal link. Social icons and footer links are further down
+the same file.
+
+## Brand colors
+
+```css
+--deep-olive: #194C24;  /* borders, logo, shadows */
+--terracotta: #D94F30;  /* sale badge, accents */
+--cream:      #FFF0D7;  /* button fill */
+--background: #D6CDBF;  /* page background */
+--dark-olive: #4A5D3B;  /* button label */
+--text:       #2C2C2C;  /* body copy */
+```
+
+Fonts are loaded from Google Fonts in [src/styles/fonts.css](src/styles/fonts.css):
+Cormorant Garamond, Jost and Barlow.
+
+## Project structure
 
 ```
 cuppino-linktree/
+├── index.html                 # HTML shell, title and social meta tags
+├── public/og-image.jpg        # 1200x630 social share image
 ├── src/
-│   ├── app/
-│   │   ├── App.tsx           # Main component
-│   │   └── components/       # UI components
-│   ├── imports/
-│   │   └── CuppinoLogo.tsx   # SVG logo component
-│   └── main.tsx              # Entry point
-├── index.html                # HTML template
-├── vite.config.ts            # Vite configuration
-└── package.json              # Dependencies
+│   ├── main.tsx               # entry point
+│   ├── app/App.tsx            # the entire page
+│   ├── imports/CuppinoLogo.tsx  # logo, exported from Figma
+│   ├── assets/hero-gift-box.webp
+│   └── styles/                # fonts, tailwind, theme tokens
+├── tsconfig.json
+└── vite.config.ts
 ```
 
-## SEO Metadata
+## Social preview
 
-The app includes optimized metadata for:
-- Meta titles and descriptions (IT/SE/EN)
-- Open Graph tags (social sharing)
-- Structured data (Schema.org)
-- Mobile viewport optimization
-- Fast loading performance
+Title, description and Open Graph tags are in [index.html](index.html). The share image
+is `public/og-image.jpg`, served at `/og-image.jpg`. If you change either, re-scrape the
+URL in the Facebook Sharing Debugger so the cached preview updates.
 
-## Original Figma Design
+## Origin
 
-Based on: https://www.figma.com/design/A1XRYzEOHREta1PyjclnnO/Mobile-Link-in-Bio-Page
-
-Customized for Cuppino brand identity with colors extracted from product photography.
-
-## Support
-
-For issues or questions about Shopify integration, see the deployment guide or contact the development team.
+Generated from a Figma Make export of
+[this design](https://www.figma.com/design/A1XRYzEOHREta1PyjclnnO/Mobile-Link-in-Bio-Page),
+then stripped down: the export shipped 48 unused shadcn/ui components and ~55 unused
+dependencies, none of which the page ever imported. See [ATTRIBUTIONS.md](ATTRIBUTIONS.md).
